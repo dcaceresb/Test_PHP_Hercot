@@ -25,3 +25,35 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->define(App\Service::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'price' => $faker->numberBetween($min = 10000, $max = 150000),
+        
+    ];
+});
+
+$factory->define(App\Dentist::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        
+    ];
+});
+
+$factory->define(App\Patient::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+    ];
+});
+
+$factory->define(App\Appointment::class, function (Faker $faker) {
+    return [
+        'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'price' => $faker->numberBetween($min = 10000, $max = 150000),
+        'dentist_id' => $faker->numberBetween($min = 1, $max = 10),
+        'service_id' => $faker->numberBetween($min = 1, $max = 10),
+        'patient_id' => $faker->numberBetween($min = 1, $max = 10),
+        
+    ];
+});

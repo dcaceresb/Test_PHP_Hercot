@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('Dentists','DentistController');
+Route::resource('Appointment','AppointmentController');
+Route::resource('Patient','PatientController');
+Route::resource('Service','ServiceController');
