@@ -85,8 +85,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('Appointment.index') }}">index</a>
-
+                    <a href="{{ route('Appointment.index') }}">Historial</a>
+                    <a href="{{ route('Appointment.create') }}">Agregar</a>
                 </div>
             </div>
         </div>
