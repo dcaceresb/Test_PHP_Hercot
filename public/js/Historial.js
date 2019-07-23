@@ -82,7 +82,7 @@ function updateTable()
 $(document).ready(function () {
     $('#example').DataTable({
         "order":[ 0, "desc" ],
-        "lengthChange": false,
+        "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]],
         "columnDefs": [
             { "orderable": false, "targets": [1, 2, 3, 4, 5, 6] },
             { "orderable": true, "targets": [0] }
@@ -90,18 +90,19 @@ $(document).ready(function () {
         "searching": false
 
     });
+
+    $('#Desde').change(function(){
+        if($('#Hasta').val()!='')
+        {
+            updateTable();
+        }
+    });
+    
+    $('#Hasta').change(function(){
+        if($('#Desde').val()!='')
+        {
+            updateTable();
+        }
+    });
 });
 
-$('#Desde').change(function(){
-    if($('#Hasta').val()!='')
-    {
-        updateTable();
-    }
-});
-
-$('#Hasta').change(function(){
-    if($('#Desde').val()!='')
-    {
-        updateTable();
-    }
-});
