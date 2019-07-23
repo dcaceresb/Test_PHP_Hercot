@@ -55,6 +55,19 @@ class AppointmentController extends Controller
 
     public function store(Request $request)
     {
+        $v = \Validator::make($request->all(), [
+            
+            'date' => 'required',
+            'price' => 'required',
+            'dentist_id' => 'required|in:dentist|min:1',
+            'patient_id' => 'required|in:Patient|min:1',
+            'service_id' => 'required|in:Service|min:1',
+        ]);
+        if ($v->fails())
+        {
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+
         $Appointment = new Appointment;
         $Appointment->date = $request->date;
         $Appointment->price = str_replace(".","",$request->price);
