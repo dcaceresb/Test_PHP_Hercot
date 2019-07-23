@@ -28,9 +28,8 @@
                 </div>
             </div>
         </div>
-        
-        
     </form>
+    <a class="btn btn-primary" href="{{ route('Appointment.create') }}">Nueva consulta</a>
     <br>
     <table id="example" class="table table-bordered table-hover table-striped">
         <thead class="thead-light">
@@ -52,6 +51,7 @@
                     <td> {{ $appointment->service_name }}</td>
                     <td> {{ $appointment->dentist_name }}</td>
                     <td> ${{ number_format($appointment->price, 0, '', '.')}}</td>
+                    
                     <td> 
                         
                         
@@ -64,6 +64,7 @@
                                 <button class="btn btn-default " type="submit"><i class="fa fa-trash-o fa-lg"> </i></button>
                         </form>
                     </td>
+                    <td style="display:none;"> ${{ number_format($appointment->service_price, 0, '', '.')}}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -51,7 +51,17 @@ function updateTable()
         {
             console.log('date: '+date);
             precio = value[4].replace("$",'');
-            total+=parseInt(precio.replace('.',''));
+            while (precio.includes('.'))
+            {
+                precio = precio.replace('.', '');
+            } 
+            total+=parseInt(precio);
+            precio = value[6].replace("$",'');
+            while (precio.includes('.'))
+            {
+                precio = precio.replace('.', '');
+            } 
+            total-=parseInt(precio);
             console.log('index: '+index+' precio: '+precio);
             toAdd.push(value);
         }
@@ -64,6 +74,7 @@ function updateTable()
     {
         table.row.add(e).draw();
     })
+    table.column(6).visible(false);
     $("#Ganancias").text("Ganancias total por periodo: $"+total.toLocaleString()+".-");
     console.log(total);
 }
@@ -71,8 +82,9 @@ function updateTable()
 $(document).ready(function () {
     $('#example').DataTable({
         "order":[ 0, "desc" ],
+        "lengthChange": false,
         "columnDefs": [
-            { "orderable": false, "targets": [1, 2, 3, 4, 5] },
+            { "orderable": false, "targets": [1, 2, 3, 4, 5, 6] },
             { "orderable": true, "targets": [0] }
         ],
         "searching": false
