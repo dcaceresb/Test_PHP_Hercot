@@ -18,7 +18,7 @@ class AppointmentController extends Controller
                         ->join('Dentists', 'Appointments.dentist_id', '=', 'Dentists.id')
                         ->join('Services', 'Appointments.service_id', '=', 'Services.id')
                         ->join('Patients', 'Appointments.patient_id', '=', 'Patients.id')
-                        ->select('Appointments.*', 'Dentists.name as dentist_name', 'Services.name as service_name','Patients.name as patient_name')
+                        ->select('Appointments.*', 'Dentists.name as dentist_name', 'Services.name as service_name','Services.price as service_price','Patients.name as patient_name')
                         ->get();
    
         //return $appointments;

@@ -44,7 +44,7 @@
         <tbody>
             @foreach($appointments as $appointment)
                 @php
-                    $total += (int)$appointment->price;
+                    $total += (int)$appointment->price - (int)$appointment->service_price;
                 @endphp
                 <tr>
                     <td> {{ $appointment->date }}</td>
